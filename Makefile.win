@@ -1,0 +1,40 @@
+# Project: jogomem
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = jogomem.o controljgd.o rank.o mcursor.o interface.o
+LINKOBJ  = jogomem.o controljgd.o rank.o mcursor.o interface.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib32" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = jogomem.exe
+CXXFLAGS = $(CXXINCS) -m32 -std=c99
+CFLAGS   = $(INCS) -m32 -std=c99
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+jogomem.o: jogomem.c
+	$(CC) -c jogomem.c -o jogomem.o $(CFLAGS)
+
+controljgd.o: controljgd.c
+	$(CC) -c controljgd.c -o controljgd.o $(CFLAGS)
+
+rank.o: rank.c
+	$(CC) -c rank.c -o rank.o $(CFLAGS)
+
+mcursor.o: mcursor.c
+	$(CC) -c mcursor.c -o mcursor.o $(CFLAGS)
+
+interface.o: interface.c
+	$(CC) -c interface.c -o interface.o $(CFLAGS)
